@@ -1,0 +1,24 @@
+int a;// analog LDR output
+int digitalLDR;// Digital LDR output
+void setup() {
+  Serial.begin(9600);//serial USB Communication
+// put your setup code here, to run once:
+}
+
+void loop() {
+  a = analogRead(A0);// Analog reading of LDR
+  a= map(a, 0,1024, 1500, 0);// change last two variables (1500 & 0) to change range of LDR
+  Serial.print("Analog :");
+  Serial.println(a); // Printing of analog reading of LUX in LDR
+  a=a*0.0079;// Watt/m2 calculation
+  Serial.println(a);// Printing of analog reading of Watt/M2 in LDR
+  digitalLDR= digitalRead(12);// digital reading of LDR
+  digitalLDR= map(digitalLDR,0,1, 1, 0);//LDR is resistant inversily propertional to light intensity 
+  Serial.print("Digital :");
+  Serial.println(digitalLDR);  // Printing of digital reading of LDR
+  //1- Hihj Light 0-Low Light
+  delay(1000);// Remove delay to increase rate of data per second
+     
+ 
+
+ `
